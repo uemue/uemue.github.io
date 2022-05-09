@@ -1,13 +1,18 @@
-import { type Article, listArticles, findArticle } from '../../lib/article';
+import {
+  type Article,
+  listArticles,
+  findArticle,
+  renderContent,
+} from '../../lib/article';
 import type { NextPage } from 'next';
 
-type Props = { article: Article };
+type Props = { article: Article; html: string };
 
-const ArticlePage: NextPage<Props> = ({ article }) => {
+const ArticlePage: NextPage<Props> = ({ article, html }) => {
   return (
     <div>
       <h1>{article.title}</h1>
-      <p>{article.content}</p>
+      <div dangerouslySetInnerHTML={{ __html: html }} />
     </div>
   );
 };
@@ -28,9 +33,10 @@ export const getStaticPaths = () => {
   };
 };
 
-export const getStaticProps = ({ params }: any) => {
+export const getStaticProps = async ({ params }: any) => {
   const article = findArticle(params.slug);
+  const html = await renderContent(article);
   return {
-    props: { article },
+    props: { article, html },
   };
 };
