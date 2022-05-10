@@ -16,21 +16,21 @@ const articleBasePath = path.join(process.cwd(), 'articles');
 export const listArticles = (): Article[] => {
   const files = fs.readdirSync(articleBasePath);
   const articles = files.map((fileName) => {
-    const file = matter.read(path.join(articleBasePath, fileName));
-
     const slug = path.basename(fileName, '.md');
-    const date = slug.slice(0, 10);
-    const title = file.data.title;
-    const content = file.content;
+    const article = findArticle(slug);
 
-    return { date, slug, title, content };
+    return article;
   });
   return articles;
 };
 
 export const findArticle = (slug: string): Article => {
-  const result = listArticles().find((article) => article.slug == slug);
-  return result as Article;
+  const file = matter.read(path.join(articleBasePath, slug + '.md'));
+  const date = slug.slice(0, 10);
+  const title = file.data.title;
+  const content = file.content;
+
+  return { date, slug, title, content };
 };
 
 export const renderContent = async (article: Article): Promise<string> => {
