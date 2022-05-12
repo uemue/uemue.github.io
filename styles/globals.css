@@ -1,14 +1,35 @@
+html {
+  background-color: #f8f8f8;
+}
+
 body {
   max-width: 800px;
   margin: 0 auto;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
 }
 
 header {
   padding: 2rem;
-  font-weight: bold;
 }
 
 header a {
   color: inherit;
+}
+
+main {
+  padding: 0 2rem;
+}
+
+section {
+  padding-bottom: 3rem;
+}
+
+time {
+  display: block;
+  color: #666;
+}
+
+footer {
+  padding: 2rem;
+  text-align: center;
 }

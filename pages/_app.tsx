@@ -12,15 +12,20 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>{blogTitle}</title>
       </Head>
       <header>
-        <p>
-          <Link href='/'>
+        <Link href='/'>
+          <h1>
             <a>{blogTitle}</a>
-          </Link>
-        </p>
+          </h1>
+        </Link>
       </header>
       <main>
         <Component {...pageProps} />
       </main>
+      <footer>
+        <Link href='/'>
+          <a>Home</a>
+        </Link>
+      </footer>
     </>
   );
 }

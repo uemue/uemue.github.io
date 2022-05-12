@@ -11,6 +11,7 @@ type Props = { article: Article; html: string };
 const ArticlePage: NextPage<Props> = ({ article, html }) => {
   return (
     <div>
+      <time>{article.date}</time>
       <h1>{article.title}</h1>
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </div>
