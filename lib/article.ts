@@ -21,7 +21,18 @@ export const listArticles = (): Article[] => {
 
     return article;
   });
-  return articles;
+
+  const sortedArticles = articles.sort((article1, article2) => {
+    if (article1.date < article2.date) {
+      return 1;
+    } else if (article1.date > article2.date) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+
+  return sortedArticles;
 };
 
 export const findArticle = (slug: string): Article => {
