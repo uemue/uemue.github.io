@@ -11,21 +11,23 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>{blogTitle}</title>
       </Head>
-      <header>
-        <Link href='/'>
-          <a>
-            <h1>{blogTitle}</h1>
-          </a>
-        </Link>
-      </header>
-      <main>
-        <Component {...pageProps} />
-      </main>
-      <footer>
-        <Link href='/'>
-          <a>Home</a>
-        </Link>
-      </footer>
+      <div className='container'>
+        <header>
+          <div className='blog-title'>
+            <Link href='/'>
+              <a>{blogTitle}</a>
+            </Link>
+          </div>
+        </header>
+        <main>
+          <Component {...pageProps} />
+        </main>
+        <footer>
+          <Link href='/'>
+            <a>Home</a>
+          </Link>
+        </footer>
+      </div>
     </>
   );
 }

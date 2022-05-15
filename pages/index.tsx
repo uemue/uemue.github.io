@@ -6,16 +6,18 @@ type Props = { articles: Article[] };
 
 const Home: NextPage<Props> = ({ articles }) => {
   return (
-    <>
-      {articles.map((article) => (
-        <section key={article.slug}>
-          <time>{article.date}</time>
-          <Link href={`/articles/${article.slug}`}>
-            <a>{article.title}</a>
-          </Link>
-        </section>
-      ))}
-    </>
+    <section>
+      <ol>
+        {articles.map((article) => (
+          <li key={article.slug}>
+            <time>{article.date}</time>
+            <Link href={`/articles/${article.slug}`}>
+              <a>{article.title}</a>
+            </Link>
+          </li>
+        ))}
+      </ol>
+    </section>
   );
 };
 
