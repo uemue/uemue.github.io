@@ -13,9 +13,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <header>
         <Link href='/'>
-          <h1>
-            <a>{blogTitle}</a>
-          </h1>
+          <a>
+            <h1>{blogTitle}</h1>
+          </a>
         </Link>
       </header>
       <main>
