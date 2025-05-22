@@ -1,8 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { remark } from 'remark';
-import remarkHtml from 'remark-html';
+// remark and remark-html will be imported dynamically
+// import { remark } from 'remark';
+// import remarkHtml from 'remark-html';
 
 export type Article = {
   date: string;
@@ -45,6 +46,12 @@ export const findArticle = (slug: string): Article => {
 };
 
 export const renderContent = async (article: Article): Promise<string> => {
-  const result = await remark().use(remarkHtml).process(article.content);
-  return result.toString();
+  // Dynamically import remark and plugins
+  const { remark } = await import('remark');
+  const { default: remarkHtml } = await import('remark-html'); // .default for CJS/ESM interop
+
+  const processedContent = await remark()
+    .use(remarkHtml)
+    .process(article.content);
+  return processedContent.toString();
 };

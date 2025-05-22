@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <header>
           <div className='blog-title'>
             <Link href='/'>
-              <a>{blogTitle}</a>
+              {blogTitle}
             </Link>
           </div>
         </header>
@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </main>
         <footer>
           <Link href='/'>
-            <a>Home</a>
+            Home
           </Link>
         </footer>
       </div>
